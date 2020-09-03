@@ -6,10 +6,22 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-//creating same express application as in node and express but now we are using express-generator
+
+//creating same express application as in node and express but now we are using express-generator and connected to mongodb server
 var dishRouter = require('./routes/dishRouter');
 var promoRouter = require('./routes/promoRouter');
 var leaderRouter = require('./routes/leaderRouter');
+
+const mongoose = require('mongoose');
+
+const Dishes = require('./models/dishes');
+
+const url = 'mongodb://localhost:27017/conFusion';
+const connect = mongoose.connect(url, { useNewUrlParser: true });
+
+connect.then((db) => {
+   console.log('connected to server');
+}, (err) => {console.log(err); });
 
 var app = express();
 
