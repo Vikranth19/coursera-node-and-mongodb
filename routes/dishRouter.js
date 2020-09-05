@@ -54,7 +54,7 @@ dishRouter.route('/:dishId')
     // res.end('Will send the details of the dish ' + req.params.dishId + ' to you');
     Dishes.findById(req.params.dishId)
     .then((dish) => {
-        console.log('dish created succesfully ', dish);
+        console.log('dish found succesfully ', dish);
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.json(dish);
